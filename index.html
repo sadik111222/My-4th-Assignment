@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
@@ -19,14 +22,43 @@
 
     <title>Job Field</title>
 </head>
-<body >
+<body class="min-h-screen  bg-base-200">
     
-    <header>
-        
+    <header class="max-w-[1110px] mx-auto sticky">
+        <div>
+            <h1 class="text-4xl font-medium pt-10">
+                Job Application Tracker
+            </h1>
+            <div class="flex justify-between gap-4 py-5">
+                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
+                    <h3 class="text-neutral/70">Total</h3>
+                    <p class="pt-2 font-bold text-2xl">0</p>
+                </div>
+                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
+                    <h3 class="text-neutral/70">Interview</h3>
+                    <p class="pt-2 font-bold text-2xl text-green-500">0</p>
+                </div>
+                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
+                    <h3 class="text-neutral/70">Rejected</h3>
+                    <p class="pt-2 font-bold text-2xl text-red-500">0</p>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main class="max-w-[1110px] mx-auto">
+        <section>
+            <div>
+                <div><h3>Available Jobs</h3></div>
+                <div>
+                    <p>0</p>
+                    <p>jobs</p>
+                </div>
+            </div>
+            <div>
 
+            </div>
+        </section>
     </main>
 
 
