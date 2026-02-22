@@ -34,7 +34,14 @@ function renderJobs() {
     
     const filteredJobs = currentTab === 'all' ? jobs : jobs.filter(job => job.status === currentTab);
     
-    document.getElementById('current-tab-count').innerText = filteredJobs.length;
+    const totalJobs = jobs.length;
+    const currentCount = filteredJobs.length;
+
+    if (currentTab === 'all') {
+    document.getElementById('current-tab-count').innerText = `${totalJobs}`;
+    } else {
+        document.getElementById('current-tab-count').innerText = `${currentCount} of ${totalJobs}`;
+    }
     container.innerHTML = '';
 
     if (filteredJobs.length === 0) {
