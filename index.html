@@ -24,23 +24,23 @@
 
     <title>Job Field</title>
 </head>
-<body class="min-h-screen  bg-base-300">
+<body class="min-h-screen px-3 sm:px-6  bg-base-300">
     
-    <header class="max-w-[1110px] mx-auto sticky">
+    <header class="max-w-[1110px]  mx-auto sticky">
         <div>
             <h1 class="text-4xl font-medium pt-10">
                 Job Application Tracker
             </h1>
-            <div class="flex justify-between gap-4 py-5">
+            <div class="flex justify-between gap-2 sm:gap-4 py-5">
                 <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
                     <h3 class="text-neutral/70">Total</h3>
                     <p id="total-count" class="pt-2 font-bold text-2xl">0</p>
                 </div>
-                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
+                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-3.5 sm:p-5 shadow-xs">
                     <h3 class="text-neutral/70">Interview</h3>
                     <p id="interview-count" class="pt-2 font-bold text-2xl text-green-500">0</p>
                 </div>
-                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
+                <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-3.5 sm:p-5 shadow-xs">
                     <h3 class="text-neutral/70">Rejected</h3>
                     <p id="rejected-count" class="pt-2 font-bold text-2xl text-red-500">0</p>
                 </div>
@@ -49,22 +49,22 @@
     </header>
 
     <main class="max-w-[1110px] mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+        <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">Available Jobs</h2>
             <p class="text-gray-500 font-medium"><span id="current-tab-count">0</span> Jobs</p>
         </div>
 
         <div class="flex gap-2">
 
-            <button id="tab-all" class="bg-base-100 py-5 px-14 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+            <button id="tab-all" class="bg-base-100 cursor-pointer  hover:shadow-2xl hover:bg-blue-100 sm:py-5 py-3 px-8 sm:px-14 border-2 border-solid border-base-300 rounded-xl shadow-xs">
                 All
             </button>
 
-            <button id="tab-interview" class="bg-base-100 py-5 px-8 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+            <button id="tab-interview" class="bg-base-100 cursor-pointer  hover:shadow-2xl hover:bg-blue-100 sm:py-5 px-4 sm:px-8 border-2 border-solid border-base-300 rounded-xl shadow-xs">
                 Interview
             </button>
 
-            <button id="tab-rejected" class="bg-base-100 py-5 px-9 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+            <button id="tab-rejected" class="bg-base-100 cursor-pointer  hover:shadow-2xl hover:bg-blue-100 sm:py-5 px-4 sm:px-9 border-2 border-solid border-base-300 rounded-xl shadow-xs">
                 Rejected
             </button>
 
@@ -76,11 +76,11 @@
         
         </div>
 
-        <div id="empty-state" class=" flex flex-col bg-base-100 items-center rounded-xl justify-center text-center py-15">
+        <div id="empty-state" class=" flex flex-col bg-base-100 items-center rounded-xl justify-center text-center mt-7 py-15">
             <img src="./img/jobs.png" alt="No jobs" class="w-48 mb-4">
             <div>
-                <h3 class="text-xl font-bold text-gray-700">No Jobs Available</h3>
-                <p class="text-gray-500">Try changing your filters or adding new applications.</p>
+                <h3 class="text-xl font-bold text-gray-700">No jobs available</h3>
+                <p class="text-gray-500">Check back soon for new job opportunities.</p>
             </div>
         </div>           
 

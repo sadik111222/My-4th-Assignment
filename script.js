@@ -54,18 +54,16 @@ function renderJobs() {
             statusBadge = `<div class="badge badge-error p-4 font-bold text-black">REJECTED</div>`;
            
         } 
-        else {
-            statusBadge = `<div class=" badge badge-neutral font-bold p-4 text-white bg-base-600">NOT APPLIED</div>`;
-        }
+
             const card = document.createElement('div');
             card.className = "bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow relative";
             card.innerHTML = `
-                <button onclick="deleteJob(${job.id})" class="absolute top-10 py-[15px] px-4 border-2 rounded-full right-10 text-2xl text-gray-400 hover:text-red-500 transition-colors">
+                <button onclick="deleteJob(${job.id})" class="absolute top-4 sm:top-10 right-4 sm:right-10 py-[7px] sm:py-[15px] px-2 sm:px-4 border-2 cursor-pointer  hover:shadow-2xl rounded-full  text-2xl text-gray-400 hover:text-red-500 transition-colors">
                     <i class="fa-solid fa-trash"></i>
                 </button>
                 <div class="mb-4">
-                    <h3 class="font-bold text-lg text-gray-800">${job.company}</h3>
-                    <p class="text-blue-600 font-medium">${job.position}</p>
+                    <h3 class="font-bold text-xl sm:text-2xl text-gray-800">${job.company}</h3>
+                    <p class="text-blue-600 text-[14px] sm:text-[16px] font-medium">${job.position}</p>
                 </div>
 
                 <div class="pb-3">
@@ -80,11 +78,11 @@ function renderJobs() {
                 </div>
                 <div class="flex gap-2 pt-4 border-t">
                     <button onclick="updateStatus(${job.id}, 'interview')" 
-                        class="flex-1 py-2 rounded-lg font-bold transition-colors ${job.status === 'interview' ? 'bg-green-600 text-white' : 'bg-green-100 text-green-600 hover:bg-green-200'}">
+                        class="flex-1 cursor-pointer  hover:shadow-2xl py-2 rounded-lg font-bold transition-colors ${job.status === 'interview' ? 'bg-green-600 text-white' : 'bg-green-100 text-green-600 hover:bg-green-200'}">
                         Interview
                     </button>
                     <button onclick="updateStatus(${job.id}, 'rejected')" 
-                        class="flex-1 py-2 rounded-lg font-bold transition-colors ${job.status === 'rejected' ? 'bg-red-600 text-white' : 'bg-red-100 text-red-600 hover:bg-red-200'}">
+                        class="flex-1 py-2 rounded-lg font-bold transition-colors cursor-pointer  hover:shadow-2xl ${job.status === 'rejected' ? 'bg-red-600 text-white' : 'bg-red-100 text-red-600 hover:bg-red-200'}">
                         Rejected
                     </button>
                 </div>
