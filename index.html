@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
@@ -32,59 +34,55 @@
             <div class="flex justify-between gap-4 py-5">
                 <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
                     <h3 class="text-neutral/70">Total</h3>
-                    <p class="pt-2 font-bold text-2xl">0</p>
+                    <p id="total-count" class="pt-2 font-bold text-2xl">0</p>
                 </div>
                 <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
                     <h3 class="text-neutral/70">Interview</h3>
-                    <p class="pt-2 font-bold text-2xl text-green-500">0</p>
+                    <p id="interview-count" class="pt-2 font-bold text-2xl text-green-500">0</p>
                 </div>
                 <div class="bg-base-100 w-full border-2 border-solid border-base-300 rounded-xl p-5 shadow-xs">
                     <h3 class="text-neutral/70">Rejected</h3>
-                    <p class="pt-2 font-bold text-2xl text-red-500">0</p>
+                    <p id="rejected-count" class="pt-2 font-bold text-2xl text-red-500">0</p>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="max-w-[1110px] mx-auto">
-    
-            <div class="flex justify-between w-full py-6">
-                <div><h3 class="font-medium text-2xl ">Available Jobs</h3></div>
-                <div class="flex gap-3">
-                    <p id="current-tab-count">0</p>
-                    <p>jobs</p>
-                </div>
-            </div>
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">Available Jobs</h2>
+            <p class="text-gray-500 font-medium"><span id="current-tab-count">0</span> Jobs</p>
+        </div>
 
-            <div class="flex gap-2">
+        <div class="flex gap-2">
 
-                <button class="bg-base-100 py-5 px-14 border-2 border-solid border-base-300 rounded-xl shadow-xs">
-                    All
-                </button>
+            <button id="tab-all" class="bg-base-100 py-5 px-14 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+                All
+            </button>
 
-                <button class="bg-base-100 py-5 px-8 border-2 border-solid border-base-300 rounded-xl shadow-xs">
-                    Interview
-                </button>
+            <button id="tab-interview" class="bg-base-100 py-5 px-8 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+                Interview
+            </button>
 
-                <button class="bg-base-100 py-5 px-9 border-2 border-solid border-base-300 rounded-xl shadow-xs">
-                    Rejected
-                </button>
+            <button id="tab-rejected" class="bg-base-100 py-5 px-9 border-2 border-solid border-base-300 rounded-xl shadow-xs">
+                Rejected
+            </button>
 
                 
 
-            </div>
+        </div>
 
-            <div id="jobs-container" class="pt-6 flex flex-col gap-12 ">
-            
-            </div>
+        <div id="jobs-container" class="pt-6 flex flex-col gap-12 ">
+        
+        </div>
 
-            <div id="empty-state" class=" flex flex-col bg-base-100 items-center rounded-xl justify-center text-center py-15">
-                <img src="./img/jobs.png" alt="No jobs" class="w-48 mb-4">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-700">No Jobs Available</h3>
-                    <p class="text-gray-500">Try changing your filters or adding new applications.</p>
-                </div>
-            </div>           
+        <div id="empty-state" class=" flex flex-col bg-base-100 items-center rounded-xl justify-center text-center py-15">
+            <img src="./img/jobs.png" alt="No jobs" class="w-48 mb-4">
+            <div>
+                <h3 class="text-xl font-bold text-gray-700">No Jobs Available</h3>
+                <p class="text-gray-500">Try changing your filters or adding new applications.</p>
+            </div>
+        </div>           
 
 
     </main>

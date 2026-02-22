@@ -19,9 +19,14 @@ let jobs = [
 let currentTab = 'all';
 
 function init() {
-    renderJobs();
+    document.getElementById('tab-all').addEventListener('click', () => switchTab('all'));
+    document.getElementById('tab-interview').addEventListener('click', () => switchTab('interview'));
+    document.getElementById('tab-rejected').addEventListener('click', () => switchTab('rejected'));
+
+    switchTab('all'); 
     updateDashboard();
 }
+
 
 function renderJobs() {
     const container = document.getElementById('jobs-container');
@@ -29,35 +34,40 @@ function renderJobs() {
     
     const filteredJobs = currentTab === 'all' ? jobs : jobs.filter(job => job.status === currentTab);
     
+    document.getElementById('current-tab-count').innerText = filteredJobs.length;
+    container.innerHTML = '';
 
     if (filteredJobs.length === 0) {
-        
+        container.classList.add('hidden');
+        emptyState.classList.remove('hidden');
     } else {
+        container.classList.remove('hidden');
+        emptyState.classList.add('hidden');
         
         filteredJobs.forEach(job => {
             const card = document.createElement('div');
-            card.className = "bg-base-100 p-6  rounded-xl  shadow-md hover:shadow-xl transition-shadow relative";
+            card.className = "bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow relative";
             card.innerHTML = `
-                <button onclick="deleteJob(${job.id})" class="absolute top-10 right-10 text-2xl text-gray-400 hover:text-red-500 transition-colors">
+                <button onclick="deleteJob(${job.id})" class="absolute top-10 py-[15px] px-4 border-2 rounded-full right-10 text-2xl text-gray-400 hover:text-red-500 transition-colors">
                     <i class="fa-solid fa-trash"></i>
                 </button>
                 <div class="mb-4">
                     <h3 class="font-bold text-lg text-gray-800">${job.company}</h3>
-                    <p class="text-blue-400 font-medium">${job.position}</p>
+                    <p class="text-blue-600 font-medium">${job.position}</p>
                 </div>
                 <div class="text-sm text-gray-500 space-y-2 mb-4">
-                    <p>${job.location}</p>
-                    <p></i>${job.type}</p>
-                    <p></i>${job.salary}</p>
+                    <p><i class="fas fa-map-marker-alt mr-2"></i>${job.location}</p>
+                    <p><i class="fas fa-briefcase mr-2"></i>${job.type}</p>
+                    <p><i class="fas fa-dollar-sign mr-3"></i>${job.salary}</p>
                     <p class="mt-3 italic">"${job.description}"</p>
                 </div>
-                <div class="flex gap-4 pt-4 border-t border-base-400">
+                <div class="flex gap-2 pt-4 border-t">
                     <button onclick="updateStatus(${job.id}, 'interview')" 
-                        class="flex-1 border-2 border-green-300 py-2 rounded-lg font-bold transition-colors ${job.status === 'interview' ? 'bg-green-600 text-white' : 'bg-green-100 text-green-600 hover:bg-green-200'}">
+                        class="flex-1 py-2 rounded-lg font-bold transition-colors ${job.status === 'interview' ? 'bg-green-600 text-white' : 'bg-green-100 text-green-600 hover:bg-green-200'}">
                         Interview
                     </button>
                     <button onclick="updateStatus(${job.id}, 'rejected')" 
-                        class="flex-1 border-2 border-red-300 py-2 rounded-lg font-bold transition-colors ${job.status === 'rejected' ? 'bg-red-600 text-white' : 'bg-red-100 text-red-600 hover:bg-red-200'}">
+                        class="flex-1 py-2 rounded-lg font-bold transition-colors ${job.status === 'rejected' ? 'bg-red-600 text-white' : 'bg-red-100 text-red-600 hover:bg-red-200'}">
                         Rejected
                     </button>
                 </div>
@@ -65,6 +75,48 @@ function renderJobs() {
             container.appendChild(card);
         });
     }
+}
+
+
+function updateStatus(id, newStatus) {
+    const jobIndex = jobs.findIndex(j => j.id === id);
+    if (jobs[jobIndex].status === newStatus) {
+        jobs[jobIndex].status = 'all'; 
+    } else {
+        jobs[jobIndex].status = newStatus;
+    }
+    renderJobs();
+    updateDashboard();
+}
+
+function deleteJob(id) {
+    jobs = jobs.filter(job => job.id !== id);
+    renderJobs();
+    updateDashboard();
+}
+
+
+function switchTab(tab) {
+    currentTab = tab;
+   
+    ['all', 'interview', 'rejected'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (t === tab) {
+            btn.classList.add('border-blue-600', 'text-blue-600');
+            btn.classList.remove('border-transparent', 'text-gray-500');
+        } else {
+            btn.classList.remove('border-blue-600', 'text-blue-600');
+            btn.classList.add('border-transparent', 'text-gray-500');
+        }
+    });
+    renderJobs();
+}
+
+
+function updateDashboard() {
+    document.getElementById('total-count').innerText = jobs.length;
+    document.getElementById('interview-count').innerText = jobs.filter(j => j.status === 'interview').length;
+    document.getElementById('rejected-count').innerText = jobs.filter(j => j.status === 'rejected').length;
 }
 
 init();
