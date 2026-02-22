@@ -43,8 +43,20 @@ function renderJobs() {
     } else {
         container.classList.remove('hidden');
         emptyState.classList.add('hidden');
-        
+    }
         filteredJobs.forEach(job => {
+        let statusBadge = '';
+
+        if (job.status === 'interview') {
+            statusBadge = `<div class="badge badge-success p-4 bg-green-300 font-bold text-black">INTERVIEW</div>`;
+        } 
+        else if (job.status === 'rejected') {
+            statusBadge = `<div class="badge badge-error p-4 font-bold text-black">REJECTED</div>`;
+           
+        } 
+        else {
+            statusBadge = `<div class=" badge badge-neutral font-bold p-4 text-white bg-base-600">NOT APPLIED</div>`;
+        }
             const card = document.createElement('div');
             card.className = "bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow relative";
             card.innerHTML = `
@@ -55,6 +67,11 @@ function renderJobs() {
                     <h3 class="font-bold text-lg text-gray-800">${job.company}</h3>
                     <p class="text-blue-600 font-medium">${job.position}</p>
                 </div>
+
+                <div class="pb-3">
+                ${statusBadge}
+                </div>
+
                 <div class="text-sm text-gray-500 space-y-2 mb-4">
                     <p><i class="fas fa-map-marker-alt mr-2"></i>${job.location}</p>
                     <p><i class="fas fa-briefcase mr-2"></i>${job.type}</p>
@@ -74,7 +91,7 @@ function renderJobs() {
             `;
             container.appendChild(card);
         });
-    }
+    
 }
 
 
