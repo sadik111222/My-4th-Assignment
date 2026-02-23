@@ -1,4 +1,5 @@
 let jobs = [
+
     { id: 1, company: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full-time", salary: "$130,000- $175,000", status: "all", description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide." },
     
     { id: 2, company: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$80,000 - $120,000", status: "all", description: "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends." },
@@ -9,26 +10,31 @@ let jobs = [
     
     { id: 5, company: "Innovation Labs", position: "UI/UX Engineer", location: "Remote", type: "Internship", salary: "$110,000 - $150,000", status: "all", description: "Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required." },
     
-    { id: 6, company: "MegaCorp Solutions", position: "JavaScript Developer", location: "Berlin", type: "Full-time", salary: "$130,000 - $170,00", status: "all", description: "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities." },
+    { id: 6, company: "MegaCorp Solutions", position: "JavaScript Developer", location: "Berlin", type: "Full-time", salary: "$130,000 - $170,000", status: "all", description: "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities." },
     
     { id: 7, company: "StartupXYZ", position: "Full Stack Dev", location: "Remote", type: "Full-time", salary: " $120,000 - $160,000",status: "all", description: "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included." },
     
     { id: 8, company: "TechCorp Industries", position: "Data Analyst", location: "San Francisco, CA", type: "Hybrid", salary: " $130,000 - $175,000", status: "all", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects." },
+
 ];
 
 let currentTab = 'all';
 
 function init() {
+
     document.getElementById('tab-all').addEventListener('click', () => switchTab('all'));
     document.getElementById('tab-interview').addEventListener('click', () => switchTab('interview'));
     document.getElementById('tab-rejected').addEventListener('click', () => switchTab('rejected'));
 
+
     switchTab('all'); 
     updateDashboard();
+
 }
 
 
 function renderJobs() {
+
     const container = document.getElementById('jobs-container');
     const emptyState = document.getElementById('empty-state');
     
@@ -38,15 +44,20 @@ function renderJobs() {
     const currentCount = filteredJobs.length;
 
     if (currentTab === 'all') {
+
     document.getElementById('current-tab-count').innerText = `${totalJobs}`;
+
     } else {
+        
         document.getElementById('current-tab-count').innerText = `${currentCount} of ${totalJobs}`;
     }
     container.innerHTML = '';
 
     if (filteredJobs.length === 0) {
+
         container.classList.add('hidden');
         emptyState.classList.remove('hidden');
+
     } else {
         container.classList.remove('hidden');
         emptyState.classList.add('hidden');
@@ -101,6 +112,7 @@ function renderJobs() {
 
 
 function updateStatus(id, newStatus) {
+
     const jobIndex = jobs.findIndex(j => j.id === id);
     if (jobs[jobIndex].status === newStatus) {
         jobs[jobIndex].status = 'all'; 
@@ -109,12 +121,15 @@ function updateStatus(id, newStatus) {
     }
     renderJobs();
     updateDashboard();
+
 }
 
 function deleteJob(id) {
+
     jobs = jobs.filter(job => job.id !== id);
     renderJobs();
     updateDashboard();
+
 }
 
 
@@ -123,6 +138,7 @@ function switchTab(tab) {
    
     ['all', 'interview', 'rejected'].forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
+
         if (t === tab) {
             btn.classList.add('border-blue-600', 'text-blue-600');
             btn.classList.remove('border-transparent', 'text-gray-500');
@@ -130,15 +146,18 @@ function switchTab(tab) {
             btn.classList.remove('border-blue-600', 'text-blue-600');
             btn.classList.add('border-transparent', 'text-gray-500');
         }
+
     });
     renderJobs();
 }
 
 
 function updateDashboard() {
+
     document.getElementById('total-count').innerText = jobs.length;
     document.getElementById('interview-count').innerText = jobs.filter(j => j.status === 'interview').length;
     document.getElementById('rejected-count').innerText = jobs.filter(j => j.status === 'rejected').length;
+
 }
 
 init();
